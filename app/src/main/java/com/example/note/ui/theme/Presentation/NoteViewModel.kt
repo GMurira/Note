@@ -1,4 +1,4 @@
-package com.example.note.ui.theme
+package com.example.note.ui.theme.Presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -19,8 +19,17 @@ class NoteViewModel(private val db: NotesDao): ViewModel() {
     }
     fun updateNote(note: Note){
         viewModelScope.launch (Dispatchers.IO){
-            db.updateNote(C)
+            db.updateNote(note)
         }
+    }
+    fun createNote(title: String, note: String, image: String? = null){
+        val note = Note(title = title, note = note, imageUri = image)
+        viewModelScope.launch (Dispatchers.IO){
+            db.insertNote(note)
+        }
+    }
+    suspend fun getNote(id: Int): Note?{
+        return db.getNoteById(id)
     }
 
 }
@@ -29,6 +38,6 @@ class ViewModelFactory(private val db: NotesDao): ViewModelProvider.NewInstanceF
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return NoteViewModel(
             db = db
-        )as T
+        ) as T
     }
 }

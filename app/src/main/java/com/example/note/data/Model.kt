@@ -1,6 +1,5 @@
 package com.example.note.data
 
-import android.provider.SyncStateContract.Constants
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
