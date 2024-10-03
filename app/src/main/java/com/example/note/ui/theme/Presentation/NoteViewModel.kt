@@ -19,7 +19,7 @@ class NoteViewModel(private val db: NotesDao): ViewModel() {
     }
     fun updateNote(note: Note){
         viewModelScope.launch (Dispatchers.IO){
-            db.updateNote()
+            db.updateNote(C)
         }
     }
 
