@@ -93,6 +93,7 @@ fun NoteDetail(
                         )
                     Text(
                         text = note.value.note,
+
                         modifier = Modifier.padding(12.dp)
                 }
             }
